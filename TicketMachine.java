@@ -56,7 +56,7 @@ public class TicketMachine
         }
         else {
             System.out.println("Use a positive amount rather than: " +
-                               amount);
+                amount);
         }
     }
 
@@ -83,8 +83,8 @@ public class TicketMachine
         }
         else {
             System.out.println("You must insert at least: " +
-                               (price - balance) + " more cents.");
-                    
+                (price - balance) + " more cents.");
+
         }
     }
 
@@ -99,16 +99,21 @@ public class TicketMachine
         balance = 0;
         return amountToRefund;
     }
-    
+
     /**
      * vacia la máquina de todas las monedas que hay en ella
      */
     public int emptyMachine()
     {
         int todoDinero;
-        todoDinero = balance+total;
-        total=0;
-        balance=0;
+        if(balance == 0){
+            todoDinero = total;
+            total=0;                
+        }
+        else {
+            System.out.println("error en vaciado operacion en curso"); 
+            todoDinero = -1;            
+        }
         return todoDinero;
     }
 }
