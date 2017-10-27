@@ -56,8 +56,11 @@ public class TicketMachine
      */
     public void insertMoney(int amount)
     {
-        if(amount > 0) {
+        if(amount > 0 & billete > 0) {
             balance = balance + amount;
+        }
+        else if(amount > 0 & billete == 0){
+            System.out.println("lo sentimos esta maquina no tiene mas billetes");
         }
         else {
             System.out.println("Use a positive amount rather than: " +
