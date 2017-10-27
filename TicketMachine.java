@@ -17,15 +17,17 @@ public class TicketMachine
     private int balance;
     // The total amount of money collected by this machine.
     private int total;
-
+    // premio para los billetes
+    private boolean premio;
     /**
      * Create a machine that issues tickets of the given price.
      */
-    public TicketMachine(int cost)
+    public TicketMachine(int cost, boolean premiado)
     {
         price = cost;
         balance = 0;
         total = 0;
+        premio= premiado;
     }
 
     /**
@@ -66,10 +68,17 @@ public class TicketMachine
      * an error message if more money is required.
      */
     public void printTicket()
-    {
-        if(balance >= price) {
+    { 
+        if(balance >= price & premio == true ) {
             // Simulate the printing of a ticket.
             System.out.println("##################");
+            System.out.println("# The BlueJ Line");
+            System.out.println("# Ticket");
+            System.out.println("# " + price + " cents.");
+            System.out.println("##################");
+            System.out.println();
+            
+              System.out.println("BILLETE REGALO");
             System.out.println("# The BlueJ Line");
             System.out.println("# Ticket");
             System.out.println("# " + price + " cents.");
@@ -81,13 +90,28 @@ public class TicketMachine
             // Reduce the balance by the prince.
             balance = balance - price;
         }
+          else if(balance >= price & premio == false){
+               
+              System.out.println("##################");
+            System.out.println("# The BlueJ Line");
+            System.out.println("# Ticket");
+            System.out.println("# " + price + " cents.");
+            System.out.println("##################");
+            System.out.println();
+
+            // Update the total collected with the price.
+            total = total + price;
+            // Reduce the balance by the prince.
+            balance = balance - price;
+              
+            }
         else {
             System.out.println("You must insert at least: " +
                 (price - balance) + " more cents.");
 
         }
     }
-
+    
     /**
      * Return the money in the balance.
      * The balance is cleared.
